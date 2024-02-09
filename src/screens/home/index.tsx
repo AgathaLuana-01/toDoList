@@ -1,18 +1,19 @@
 import { styles } from "./styles";
-import { SafeAreaView, TextInput, TouchableOpacity, View, Text, Image, FlatList } from "react-native";
+import { SafeAreaView, TextInput, TouchableOpacity, View, Text, Image, FlatList, Alert } from "react-native";
 import React from "react";
 import { Tarefa } from "../components/Tarefas";
 import { useState } from "react";
 
 export default function Home() {
     const [tarefa, setTarefa] = useState<string[]>([]);
-    //const tarefa = ['Integer urna interdum massa libero auctor neque turpis turpis semper.'];
+    const [tarefaDigitada, setTarefaDigitada] = useState('');
 
     function inseriTarefa() {
-        console.log('Botão de inseri tarefa clicado...');
-        console.log(tarefa);
+        if(tarefa.includes(tarefaDigitada)){
+            return Alert.alert('Ops!', 'Esta tarefa já foi cadastrada');
+        }
 
-        setTarefa(conteudoAtual => [...conteudoAtual, 'Tarefinhas ...']);
+        setTarefa(conteudoAtual => [...conteudoAtual, tarefaDigitada]);
 
     }
 
@@ -31,6 +32,7 @@ export default function Home() {
                     <TextInput style={styles.textInput}
                         placeholder="Adicione uma nova tarefa"
                         placeholderTextColor='#808080'
+                        onChangeText={textoDigitado => setTarefaDigitada(textoDigitado)} // Adcionando novas tarefas
                     />
                     <TouchableOpacity style={styles.button}
                         onPress={inseriTarefa}
