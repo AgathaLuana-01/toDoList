@@ -9,12 +9,12 @@ export default function Home() {
     const [tarefaDigitada, setTarefaDigitada] = useState('');
 
     function inseriTarefa() {
-        if(tarefa.includes(tarefaDigitada)){
+        if (tarefa.includes(tarefaDigitada)) {
             return Alert.alert('Ops!', 'Esta tarefa já foi cadastrada');
         }
 
         setTarefa(conteudoAtual => [...conteudoAtual, tarefaDigitada]);
-
+        setTarefaDigitada(''); // Limpa a caixa de texto ao clicar no botão
     }
 
     function deletarTarefa() {
@@ -33,6 +33,7 @@ export default function Home() {
                         placeholder="Adicione uma nova tarefa"
                         placeholderTextColor='#808080'
                         onChangeText={textoDigitado => setTarefaDigitada(textoDigitado)} // Adcionando novas tarefas
+                        value={tarefaDigitada} // Limpa a caixa de texto ao clicar no botão
                     />
                     <TouchableOpacity style={styles.button}
                         onPress={inseriTarefa}
