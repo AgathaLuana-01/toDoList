@@ -35,9 +35,7 @@ export default function Home() {
                     <TouchableOpacity style={styles.button}
                         onPress={inseriTarefa}
                     >
-                        <Text style={styles.buttonText}>
-                            +
-                        </Text>
+                        <Image source={require('../../img/plus.png')} />
                     </TouchableOpacity>
                 </View>
 
