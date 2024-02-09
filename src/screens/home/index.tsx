@@ -39,6 +39,26 @@ export default function Home() {
                     </TouchableOpacity>
                 </View>
 
+                <View style={styles.viewCriadasConcluidas}>
+                    <View style={styles.viewTextContador}>
+                        <Text style={styles.colorTextAzul}>
+                            Criadas
+                        </Text>
+                        <Text style={styles.textContadores}>
+                            0
+                        </Text>
+                    </View>
+                    <View style={styles.viewTextContador}>
+                        <Text style={styles.colorTextLilas}>
+                            Concluidas
+                        </Text>
+                        <Text style={styles.textContadores}>
+                            20
+                        </Text>
+                    </View>
+
+                </View>
+
                 <FlatList
                     data={tarefa}
                     keyExtractor={item => item}

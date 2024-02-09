@@ -12,8 +12,28 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  viewCriadasConcluidas: {
+    margin: 24,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   colorTextAzul: {
     color: "#4EA8DE",
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+  colorTextLilas: {
+    color: "#8284FA",
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+  textContadores:{
+    color: '#D9D9D9',
+    fontSize: 12,
+    
+  },
+  viewTextContador:{
+    flexDirection: "row",  
   },
   colorBody: {
     flex: 4,
@@ -48,8 +68,6 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     color: "#F2F2F2",
   },
-
- 
   textoTarefa: {
     color: "#F2F2F2",
     fontSize: 14,
@@ -63,8 +81,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   viewLinhaHorizonal: {
-    margin: 24,
-    width: '100%',
+    marginBottom: 48,
+    width: "100%",
     height: 1,
     backgroundColor: "#333333",
   },
