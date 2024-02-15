@@ -12,14 +12,26 @@ export default function Home() {
         if (tarefa.includes(tarefaDigitada)) {
             return Alert.alert('Ops!', 'Esta tarefa já foi cadastrada');
         }
-
         setTarefa(conteudoAtual => [...conteudoAtual, tarefaDigitada]);
         setTarefaDigitada(''); // Limpa a caixa de texto ao clicar no botão
+
+        console.log(tarefa.length);
     }
 
-    function deletarTarefa() {
-
+    function deletarTarefa(texto: string) {
+        Alert.alert('Deletar', 'Deseja deletar a tarefa?!', [
+            {
+                text: 'Sim',
+                onPress: () => setTarefa(prevState => prevState.filter(tarefaSelecionada => tarefaSelecionada !== texto)) //Retorna todas as tarefas, menos a tarefa q foi passada em texto, então isso faz com q ela seja deletada
+            },
+            {
+                text: 'Cancelar',
+                style: 'cancel'
+            }
+        ])
     }
+
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -47,17 +59,21 @@ export default function Home() {
                         <Text style={styles.colorTextAzul}>
                             Criadas
                         </Text>
-                        <Text style={styles.textContadores}>
-                            0
-                        </Text>
+                        <View style={styles.containerContador}>
+                            <Text style={styles.textContadores}>
+                                {tarefa.length}
+                            </Text>
+                        </View>
                     </View>
                     <View style={styles.viewTextContador}>
                         <Text style={styles.colorTextLilas}>
                             Concluidas
                         </Text>
-                        <Text style={styles.textContadores}>
-                            20
-                        </Text>
+                        <View style={styles.containerContador}>
+                            <Text style={styles.textContadores}>
+                                XXX
+                            </Text>
+                        </View>
                     </View>
 
                 </View>
@@ -69,22 +85,23 @@ export default function Home() {
                         <Tarefa
                             key={item}
                             descricao={item}
-                            removerTarefa={() => deletarTarefa()}
+                            removerTarefa={() => deletarTarefa(item)}
                         />
                     )}
 
                     //Quando não há tarefas cadastradas
                     ListHeaderComponent={() => (
-                        <View style={styles.viewNaoHaTarefas}>
-                            <View style={styles.viewLinhaHorizonal}></View>
-                            <Image source={require('../../img/Clipboard.png')} />
-                            <Text style={styles.textoNaoHaTarefasNegrito}>
-                                Você ainda não tem tarefas cadastradas
-                            </Text>
-                            <Text style={styles.textoNaoHaTarefas}>
-                                Crie tarefas e organize seus itens a fazer
-                            </Text>
-                        </View>
+                        tarefa.length === 0 ?
+                            (<View style={styles.viewNaoHaTarefas}>
+                                <View style={styles.viewLinhaHorizonal}></View>
+                                <Image source={require('../../img/Clipboard.png')} />
+                                <Text style={styles.textoNaoHaTarefasNegrito}>
+                                    Você ainda não tem tarefas cadastradas
+                                </Text>
+                                <Text style={styles.textoNaoHaTarefas}>
+                                    Crie tarefas e organize seus itens a fazer
+                                </Text>
+                            </View>) : null // se houver tarefas cadastradas
                     )}
                 />
 
