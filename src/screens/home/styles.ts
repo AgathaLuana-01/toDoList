@@ -27,13 +27,21 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
   },
-  textContadores:{
-    color: '#D9D9D9',
-    fontSize: 12,
-    
+  containerContador:{
+    backgroundColor: '#333333',
+    marginHorizontal: 8,
+    paddingVertical: 2,
+    paddingHorizontal: 10,
+    borderRadius: 8,
   },
-  viewTextContador:{
-    flexDirection: "row",  
+  textContadores: {
+    color: "#D9D9D9",
+    fontSize: 12,
+    fontWeight: "bold",
+    textAlign: 'center',
+  },
+  viewTextContador: {
+    flexDirection: "row",
   },
   colorBody: {
     flex: 4,
